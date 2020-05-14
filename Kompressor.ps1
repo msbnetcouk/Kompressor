@@ -400,8 +400,6 @@ $bfCURinitButton.Add_Click(
         $script:bfsrv6 = $script:bfsrv+$bf6
         $script:bfsrv7 = $script:bfsrv+$bf7
         $script:network = $textBoxbfq8.text
-
-        $script:bfTextBox.AppendText($lf+"Checking if Batfish is reachable..."+$lf)
         
         foreach ($pFile in $prereqFiles) {
             if (!(Test-Path $pFile -PathType Leaf) -eq $true) {
@@ -412,7 +410,7 @@ $bfCURinitButton.Add_Click(
         if (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b6 -Timeout $bfWait) -eq $true -or
         (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b7 -Timeout $bfWait) -eq $true))
         {
-            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online."+$lf)
+            $script:bfTextBox.AppendText($lf+"Batfish server $script:bfsrv NOT online."+$lf)
         } else {
             New-ZipSnap $snapA $script:FileBrowserA
             
@@ -468,8 +466,6 @@ $bfCANinitButton.Add_Click(
         $script:bfsrv7 = $script:bfsrv+$bf7
         $script:network = $textBoxbfq8.text
 
-        $script:bfTextBox.AppendText($lf+"Checking if Batfish is reachable..."+$lf)
-
         foreach ($pFile in $prereqFiles) {
             if (!(Test-Path $pFile -PathType Leaf) -eq $true) {
                 $script:bfTextBox.AppendText($lf+"$pFile not found!"+$lf)
@@ -479,7 +475,7 @@ $bfCANinitButton.Add_Click(
         if (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b6 -Timeout $bfWait) -eq $true -or
         (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b7 -Timeout $bfWait) -eq $true))
         {
-            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online."+$lf)
+            $script:bfTextBox.AppendText($lf+"Batfish server $script:bfsrv NOT online."+$lf)
         } else {
             New-ZipSnap $snapB $script:FileBrowserB
             $script:bfTextBox.AppendText("$snapB CFG: Setting active network... " + $script:network + $lf)
@@ -707,8 +703,14 @@ $bfQUERYbutton.Add_Click(
         $script:bfsrv6 = $script:bfsrv+$bf6
         $script:bfsrv7 = $script:bfsrv+$bf7
         $script:network = $textBoxbfq8.text
-        Set-Network $script:network
-        New-Question $textBoxbfq1.text $textBoxbfq2.text $textBoxbfq3.text $textBoxbfq4.text
+        if (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b6 -Timeout $bfWait) -eq $true -or
+        (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b7 -Timeout $bfWait) -eq $true))
+        {
+            $script:bfTextBox.AppendText($lf+"Batfish server $script:bfsrv NOT online."+$lf)
+        } else {
+            Set-Network $script:network
+            New-Question $textBoxbfq1.text $textBoxbfq2.text $textBoxbfq3.text $textBoxbfq4.text
+        }
     }
 )
 $form.Controls.Add($bfQUERYbutton)
