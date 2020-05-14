@@ -655,7 +655,7 @@ $form.Controls.Add($textBoxbfq6Label)
 $textBoxbfq7 = New-Object System.Windows.Forms.TextBox
 $textBoxbfq7.Location = '10,200'
 $textBoxbfq7.Size = '150,55'
-$textBoxbfq7.text = '10.10.36.206'
+$textBoxbfq7.text = ''
 $textBoxbfq7.AutoSize = $true
 $form.Controls.Add($textBoxbfq7)
 
