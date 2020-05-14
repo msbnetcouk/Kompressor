@@ -1,5 +1,5 @@
-# Kompressor - www.msbnet.co.uk
-Supercharging your network/firewall changes.
+# Kompressor
+Supercharging your network/firewall changes - msbnet.co.uk
 
 Kompressor is a Powershell 5.1 GUI for Batfish, alpha release.
 
@@ -26,5 +26,5 @@ https://www.7-zip.org/download.html
 All other requests use Powershell's Invoke-RestMethod.
 https://curl.haxx.se/download.html
 
-3. A Batfish server/container - This is where all the magic happens! Batfish uses TCP/9996 and TCP/9997 by default.
+3. A Batfish container - This is where all the magic happens! Batfish uses TCP/9996 and TCP/9997 by default.
 https://github.com/batfish/batfish
