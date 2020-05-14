@@ -79,7 +79,7 @@
           "type": "headerConstraint",
           "value": {
             "applications": [
-              "http"
+              "null"
             ],
             "dscps": null,
             "dstIps": null,

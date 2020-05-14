@@ -224,7 +224,7 @@ function Remove-Snapshot([string]$arg1, [string]$arg2)
     $bfheaders = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $bfheaders.Add("X-Batfish-Version", $bfver)
     $bfheaders.Add("X-Batfish-Apikey", $bfkey)
-    $delsnap = Invoke-RestMethod -Uri http://$script:bfsrv6/v2/networks/$arg1/snapshots/$arg2 -Headers $bfheaders -Method DELETE
+    Invoke-RestMethod -Uri http://$script:bfsrv6/v2/networks/$arg1/snapshots/$arg2 -Headers $bfheaders -Method DELETE
 }
 
 function New-Question([string]$arg1,[string]$arg2,[string]$arg3,[string]$arg4)
@@ -325,7 +325,7 @@ function New-ZipSnap([string]$arg1, [object]$arg2) {
 
 function Format-Json2([Parameter(Mandatory, ValueFromPipeline)][String] $json) {
     $indent = 0;
-    ($json -Split "`n" | % {
+    ($json -Split "`n" | ForEach-Object {
         if ($_ -match '[\}\]]\s*,?\s*$') {
             # This line ends with ] or }, decrement the indentation level
             $indent--
@@ -412,7 +412,7 @@ $bfCURinitButton.Add_Click(
         if (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b6 -Timeout $bfWait) -eq $true -or
         (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b7 -Timeout $bfWait) -eq $true))
         {
-            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online..."+$lf)
+            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online."+$lf)
         } else {
             New-ZipSnap $snapA $script:FileBrowserA
             
@@ -479,7 +479,7 @@ $bfCANinitButton.Add_Click(
         if (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b6 -Timeout $bfWait) -eq $true -or
         (!(Test-TCPPort -IPAddress $script:bfsrv -Port $b7 -Timeout $bfWait) -eq $true))
         {
-            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online..."+$lf)
+            $script:bfTextBox.AppendText($lf+"Server $script:bfsrv NOT online."+$lf)
         } else {
             New-ZipSnap $snapB $script:FileBrowserB
             $script:bfTextBox.AppendText("$snapB CFG: Setting active network... " + $script:network + $lf)
