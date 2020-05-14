@@ -7,7 +7,7 @@ Kompressor will accept a 'CURRENT' and a 'CANDIDATE' configuration file.
 Once initialised, it's possible to test potential flows against either configuration. 
 
 Kompressor submits the configuration files and flow questions as HTTP POST requests to the Batfish server of your choice.
-Batfish is vendor agnostic but this release candidate was conceived specifically to address project work with Juniper SRX firewalls.
+Batfish is vendor agnostic but this release candidate was conceived specifically to address project work with Juniper SRX (Junos) firewalls.
 
 Example configuration files included.
 
