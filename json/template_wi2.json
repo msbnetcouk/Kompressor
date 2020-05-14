@@ -1,0 +1,12 @@
+{
+    "containerName": "NETWORK", 
+    "id": "LONG_GUID", 
+    "requestParams": 
+    {
+        "testrig": "SNAPSHOTNAME",
+        "si": "",
+        "sv": "",
+        "initinfo": ""
+    },
+    "testrigName": "SNAPSHOTNAME"
+}

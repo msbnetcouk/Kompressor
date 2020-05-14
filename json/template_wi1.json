@@ -1,0 +1,11 @@
+{
+    "containerName": "NETWORK", 
+    "id": "LONG_GUID", 
+    "requestParams": 
+    {
+        "answer": "", 
+        "questionname": "LONG_GUID", 
+        "testrig": "SNAPSHOTNAME"
+    }, 
+    "testrigName": "SNAPSHOTNAME"
+}
