@@ -1,4 +1,4 @@
-# Kompressor
+# Kompressor - www.msbnet.co.uk
 Supercharging your network/firewall changes.
 
 Kompressor is a Powershell 5.1 GUI for Batfish, alpha release.
