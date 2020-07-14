@@ -620,10 +620,14 @@ $textBoxbfq4Label.Text = 'policy'
 $form.Controls.Add($textBoxbfq4Label)
 
 # box5 - snapshot
-$textBoxbfq5 = New-Object System.Windows.Forms.TextBox
+$textBoxbfq5 = New-Object System.Windows.Forms.ComboBox
 $textBoxbfq5.Location = '190,160'
+$textBoxbfq5.DropDownStyle = 'DropDownList'
+$textBoxbfq5.AutoCompleteSource = 'ListItems'
+$textBoxbfq5.AutoCompleteMode = 'Suggest'
+$textBoxbfq5.Items.AddRange(@('CURRENT', 'CANDIDATE' ))
+$textBoxbfq5.SelectedIndex = 0
 $textBoxbfq5.Size = '150,55'
-$textBoxbfq5.text = $snapA
 $textBoxbfq5.AutoSize = $true
 $form.Controls.Add($textBoxbfq5)
 
